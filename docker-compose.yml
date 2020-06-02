@@ -1,0 +1,64 @@
+version: '3.7'
+services:
+  openethereum:
+    init: true
+    container_name: openethereum
+    image: openethereum/openethereum:latest
+    user: root
+    command:
+      --chain=xdai
+      --nat="extip:$EXT_IP"
+      --base-path=/root/data
+      --max-peers=100
+      --unlock="$ACCOUNT"
+      --password="$PASSWORD_PATH"
+      --tx-gas-limit="9000000"
+      --min-gas-price=1000000000
+      --gas-floor-target=10000000
+      --engine-signer="$ACCOUNT"
+      --force-sealing
+      --jsonrpc-port=8545
+      --jsonrpc-cors=all
+      --jsonrpc-interface=all
+      --jsonrpc-hosts=all
+      --jsonrpc-apis=web3,eth,net,parity
+      --logging="engine=trace,miner=trace"
+    volumes:
+      - ./data:/root/data
+      - ./password:/root/password
+      - ./key:/root/data/keys/xdai/key
+    expose:
+      - "8545"
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
+  agent:
+    init: true
+    container_name: ethstats
+    image: xdaichain/ethstats-agent:latest
+    links:
+      - "openethereum"
+    depends_on:
+      - "openethereum"
+    environment:
+      NODE_ENV: production
+      RPC_HOST: openethereum
+      RPC_PORT: 8545
+      LISTENING_PORT: 30303
+      CONTACT_DETAILS: ${ETHSTATS_CONTACT}
+      INSTANCE_NAME: ${ETHSTATS_ID}
+      WS_SERVER: "${ETHSTATS_SERVER}"
+      WS_SECRET: "${ETHSTATS_SECRET}"
+      VERBOSITY: 1 # (0 = silent, 1 = error, warn, 2 = error, warn, info, success, 3 = all logs
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
