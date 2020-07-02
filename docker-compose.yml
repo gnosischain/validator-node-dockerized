@@ -14,9 +14,10 @@ services:
       --password="$PASSWORD_PATH"
       --tx-gas-limit="9000000"
       --min-gas-price=1000000000
-      --gas-floor-target=10000000
+      --gas-floor-target=12500000
       --engine-signer="$ACCOUNT"
       --force-sealing
+      --fast-unlock
       --jsonrpc-port=8545
       --jsonrpc-cors=all
       --jsonrpc-interface=all
