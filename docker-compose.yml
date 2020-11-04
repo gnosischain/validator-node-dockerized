@@ -1,35 +1,30 @@
 version: '3.7'
 services:
-  openethereum:
+  nethermind:
     init: true
-    container_name: openethereum
-    image: openethereum/openethereum:latest
-    user: root
-    command:
-      --chain=xdai
-      --nat="extip:$EXT_IP"
-      --base-path=/root/data
-      --max-peers=100
-      --unlock="$ACCOUNT"
-      --password="$PASSWORD_PATH"
-      --tx-gas-limit="9000000"
-      --min-gas-price=1000000000
-      --gas-floor-target=12500000
-      --engine-signer="$ACCOUNT"
-      --force-sealing
-      --fast-unlock
-      --jsonrpc-port=8545
-      --jsonrpc-cors=all
-      --jsonrpc-interface=all
-      --jsonrpc-hosts=all
-      --jsonrpc-apis=web3,eth,net,parity
-      --logging="engine=trace,miner=trace"
+    container_name: xdai-validator
+    image: nethermind/nethermind:latest
+    environment:
+      NETHERMIND_CONFIG: xdai
+      NETHERMIND_AURACONFIG_FORCESEALING: "true"
+      NETHERMIND_ETHSTATSCONFIG_ENABLED: "true"
+      NETHERMIND_ETHSTATSCONFIG_SERVER: "https://dai-netstat.poa.network/api"
+      NETHERMIND_ETHSTATSCONFIG_SECRET: "${ETHSTATS_SECRET}"
+      NETHERMIND_ETHSTATSCONFIG_CONTACT: "${ETHSTATS_CONTACT}"
+      NETHERMIND_ETHSTATSCONFIG_NAME: "${ETHSTATS_ID}"
+      NETHERMIND_INITCONFIG_ISMINING: "true"
+      NETHERMIND_INITCONFIG_STORERECEIPTS: "false"
+      NETHERMIND_KEYSTORECONFIG_TESTNODEKEY: $KEY
+      NETHERMIND_MININGCONFIGCONFIG_MINGASPRICE: "1000000000"
+      NETHERMIND_MININGCONFIGCONFIG_TARGETBLOCKGASLIMIT: "12500000"
+      NETHERMIND_SYNCCONFIG_FASTSYNC: "true"
+      NETHERMIND_SYNCCONFIG_FASTBLOCKS: "true"
+      NETHERMIND_SYNCCONFIG_DOWNLOADBODIESINFASTSYNC: "false"
+      NETHERMIND_SYNCCONFIG_DOWNLOADRECEIPTSINFASTSYNC: "false"
     volumes:
-      - ./data:/root/data
-      - ./password:/root/password
-      - ./key:/root/data/keys/xdai/key
-    expose:
-      - "8545"
+      - ./nethermind/nethermind_logs:/nethermind/logs
+      - ./nethermind/nethermind_keystore:/nethermind/keystore
+      - ./nethermind/nethermind_db:/nethermind/nethermind_db
     ports:
       - "30303:30303"
       - "30303:30303/udp"
@@ -38,28 +33,4 @@ services:
       driver: "json-file"
       options:
         max-size: "10m"
-        max-file: "10"
-  agent:
-    init: true
-    container_name: ethstats
-    image: xdaichain/ethstats-agent:latest
-    links:
-      - "openethereum"
-    depends_on:
-      - "openethereum"
-    environment:
-      NODE_ENV: production
-      RPC_HOST: openethereum
-      RPC_PORT: 8545
-      LISTENING_PORT: 30303
-      CONTACT_DETAILS: ${ETHSTATS_CONTACT}
-      INSTANCE_NAME: ${ETHSTATS_ID}
-      WS_SERVER: "${ETHSTATS_SERVER}"
-      WS_SECRET: "${ETHSTATS_SECRET}"
-      VERBOSITY: 1 # (0 = silent, 1 = error, warn, 2 = error, warn, info, success, 3 = all logs
-    restart: unless-stopped
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1m"
         max-file: "10"
