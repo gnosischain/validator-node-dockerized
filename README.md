@@ -25,7 +25,7 @@
     - `ETHSTATS_CONTACT` - Validator's contact (e.g., e-mail).
     - `ETHSTATS_SECRET` - Secret key to connect to Netstat.
     - `EXT_IP` - External IP of the current server.
-    - `ACCOUNT` - Your mining address (beginning from `0x`).
+    - `ACCOUNT` - Your mining address (with leading `0x`).
 
 5. Start your node and Netstat service.
 
