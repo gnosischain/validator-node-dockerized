@@ -1,4 +1,4 @@
-# How to launch xDai validator node with Docker Compose
+# How to launch xDai validator node with Docker Compose and OpenEthereum
 
 1. Install Docker Engine and Docker Compose following the original instructions https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
 
@@ -9,9 +9,9 @@
     $ cd validator-node-dockerized
     ```
 
-3. In order to be a validator, you need to have a mining address and a private key for it. Name your JSON keystore file as `key` and put it to the `validator-node-dockerized` directory. Put keystore's password to `password` file.
+3. To be a validator, you need to have a mining address and a private key for it. Name your JSON keystore file as `key` and put it to the `validator-node-dockerized` directory. Put keystore's password to `password` file.
 
-4. Config `.env` file. There are a few settings you need to define:
+4. Copy `.env.example` to `.env` and configure the `.env` file. There are a few settings you need to define:
 
     ```
     ETHSTATS_ID=[validator_name]
