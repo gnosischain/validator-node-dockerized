@@ -1,2 +1,7 @@
 .env
-nethermind
+
+data/keystore/*
+!data/keystore/.gitkeep
+
+data/logs
+data/nethermind_db

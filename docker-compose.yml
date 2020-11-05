@@ -14,7 +14,9 @@ services:
       NETHERMIND_ETHSTATSCONFIG_NAME: "${ETHSTATS_ID}"
       NETHERMIND_INITCONFIG_ISMINING: "true"
       NETHERMIND_INITCONFIG_STORERECEIPTS: "false"
-      NETHERMIND_KEYSTORECONFIG_TESTNODEKEY: $KEY
+      NETHERMIND_KEYSTORECONFIG_BLOCKAUTHORACCOUNT: "{$ACCOUNT}"
+      NETHERMIND_KEYSTORECONFIG_PASSWORDFILES: ["/nethermind/keystore/password"]
+      NETHERMIND_KEYSTORECONFIG_UNLOCKACCOUNTS: ["{$ACCOUNT}"]
       NETHERMIND_MININGCONFIG_MINGASPRICE: "1000000000"
       NETHERMIND_MININGCONFIG_TARGETBLOCKGASLIMIT: "12500000"
       NETHERMIND_SYNCCONFIG_FASTSYNC: "true"
@@ -22,9 +24,9 @@ services:
       NETHERMIND_SYNCCONFIG_DOWNLOADBODIESINFASTSYNC: "false"
       NETHERMIND_SYNCCONFIG_DOWNLOADRECEIPTSINFASTSYNC: "false"
     volumes:
-      - ./nethermind/nethermind_logs:/nethermind/logs
-      - ./nethermind/nethermind_keystore:/nethermind/keystore
-      - ./nethermind/nethermind_db:/nethermind/nethermind_db
+      - ./data/logs:/nethermind/logs
+      - ./data/keystore:/nethermind/keystore
+      - ./data/nethermind_db:/nethermind/nethermind_db
     ports:
       - "30303:30303"
       - "30303:30303/udp"
