@@ -31,6 +31,8 @@
     $ docker-compose up -d
     ```
 
+6. (optional) Remove your private key from the `.env` file. After your docker container starts, it doesn't need the key anymore, so the key can be removed for security purposes. **But note, that next time you will need to specify the key again before you restart the docker container.**
+
 After docker containers are created, the node will sync with the chain (may take a while).
 
 To restart you need to use `docker-compose stop` and `docker-compose start` being in the `validator-node-dockerized` directory.
