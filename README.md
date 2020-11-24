@@ -11,6 +11,16 @@
 
 3. To be a validator, you need to have your mining address private key. You will keep it in a `.env` file.
 
+    If you don't have the private key in a plain format (a hex string, 64 characters long), but have a JSON Keystore file of it (with a password), please go through     the following steps to get your plain private key string:
+
+    - Open your MetaMask.
+    - Go to `Import Account`.
+    - In the `Select Type` drop-down list choose `JSON File`.
+    - Point to your JSON Keystore file, enter the password for it, and click `Import` button.
+    - Switch to the newly imported account and go to `Account details`. Click `Export private key` button.
+    - On the appeared `Show Private Keys` section type your MetaMask password and click `Confirm`.
+    - You will see your 64 characters long private key.
+
 4. Copy `.env.example` to `.env` and configure the `.env` file. There are a few settings you need to define:
 
     ```
