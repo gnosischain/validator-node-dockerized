@@ -23,9 +23,9 @@
 
     - `ETHSTATS_ID` - The displayed name of your validator in [Netstats](https://dai-netstat.poa.network/).
     - `ETHSTATS_CONTACT` - Validator's contact (e.g., e-mail).
-    - `ETHSTATS_SECRET` - Secret key to connect to Netstat.
+    - `ETHSTATS_SECRET` - Secret key to connect to Netstat (should be provided by xDai team, please, request it).
     - `KEY` - Your mining address private key (should be 64 characters long without leading `0x`).
-    - `SEQAPIKEY` - An API key for [Seq](https://datalust.co/seq) log collector.
+    - `SEQAPIKEY` - An API key for [Seq](https://datalust.co/seq) log collector (should be provided by xDai team, please, request it).
 
 5. Start your node.
 
