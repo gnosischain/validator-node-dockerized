@@ -23,7 +23,7 @@
 
     - `ETHSTATS_ID` - The displayed name of your validator in [Netstats](https://dai-netstat.poa.network/).
     - `ETHSTATS_CONTACT` - Validator's contact (e.g., e-mail).
-    - `ETHSTATS_SECRET` - Secret key to connect to Netstat.
+    - `ETHSTATS_SECRET` - Secret key to connect to Netstat (should be provided by xDai team, please, request it).
     - `EXT_IP` - External IP of the current server.
     - `ACCOUNT` - Your mining address (with leading `0x`).
 
