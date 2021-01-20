@@ -38,7 +38,7 @@ services:
     ports:
       - "30303:30303"
       - "30303:30303/udp"
-    restart: unless-stopped
+    restart: always
     logging:
       driver: "json-file"
       options:
