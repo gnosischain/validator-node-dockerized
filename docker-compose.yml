@@ -12,7 +12,8 @@ services:
       --max-peers=100
       --unlock="$ACCOUNT"
       --password="$PASSWORD_PATH"
-      --tx-gas-limit="9000000"
+      --tx-gas-limit="7500000"
+      --tx-time-limit="1000"
       --min-gas-price=1000000000
       --gas-floor-target=12500000
       --engine-signer="$ACCOUNT"
