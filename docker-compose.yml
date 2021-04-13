@@ -26,7 +26,7 @@ services:
       --jsonrpc-apis=web3,eth,net,parity
       --logging="engine=trace,miner=trace"
     healthcheck:
-      test: ["CMD", "sh", "-c", "curl -f --connect-timeout 1 --max-time 2 --retry 2 --retry-delay 3 --retry-max-time 15 -X POST -H 'Content-Type: application/json' --data '{\"jsonrpc\":\"2.0\",\"method\":\"eth_chainId\",\"id\":1}' http://localhost:8545/ || sh -c 'pkill -15 openethereum && (sleep 10; pkill -9 openethereum)'"]
+      test: ["CMD", "sh", "-c", "(curl -sf --connect-timeout 1 --max-time 2 --retry 2 --retry-delay 3 --retry-max-time 15 http://localhost:6060/metrics >/dev/null && curl -sf --connect-timeout 1 --max-time 2 --retry 2 --retry-delay 3 --retry-max-time 15 -X POST -H 'Content-Type: application/json' --data '{\"jsonrpc\":\"2.0\",\"method\":\"eth_chainId\",\"id\":1}' http://localhost:8545/ >/dev/null) || sh -c 'pkill -15 openethereum && (sleep 10; pkill -9 openethereum) ; return 1'"]
       interval: 60s
       timeout: 30s
       start_period: 60s
