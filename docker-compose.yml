@@ -19,6 +19,8 @@ services:
       --engine-signer="$ACCOUNT"
       --force-sealing
       --fast-unlock
+      --metrics
+      --metrics-port=6060
       --jsonrpc-port=8545
       --jsonrpc-cors=all
       --jsonrpc-interface=all
