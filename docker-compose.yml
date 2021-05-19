@@ -3,7 +3,7 @@ services:
   openethereum:
     init: true
     container_name: openethereum
-    image: openethereum/openethereum:v3.2.5
+    image: openethereum/openethereum:v3.2.6
     user: root
     command:
       --chain=xdai
@@ -15,7 +15,7 @@ services:
       --tx-gas-limit="7500000"
       --tx-time-limit=1000
       --min-gas-price=1000000000
-      --gas-floor-target=12500000
+      --gas-floor-target=17000000
       --engine-signer="$ACCOUNT"
       --force-sealing
       --fast-unlock
