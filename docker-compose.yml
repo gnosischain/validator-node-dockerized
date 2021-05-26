@@ -30,7 +30,6 @@ services:
       NETHERMIND_SYNCCONFIG_FASTBLOCKS: "true"
       NETHERMIND_SYNCCONFIG_DOWNLOADBODIESINFASTSYNC: "false"
       NETHERMIND_SYNCCONFIG_DOWNLOADRECEIPTSINFASTSYNC: "false"
-      NETHERMIND_TXPOOLCONFIG_GASLIMIT: "7500000"
     volumes:
       - ./data/logs:/nethermind/logs
       - ./data/keystore:/nethermind/keystore
