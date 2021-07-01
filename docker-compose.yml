@@ -15,6 +15,7 @@ services:
       --tx-time-limit=1000
       --min-gas-price=1000000000
       --gas-floor-target=17000000
+      --reseal-min-period=1000
       --engine-signer="$ACCOUNT"
       --force-sealing
       --fast-unlock
