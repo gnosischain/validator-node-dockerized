@@ -43,7 +43,7 @@
     $ docker-compose up -d
     ```
 
-6. (optional) Remove your private key from the `.env` file. After your docker container is created and started, it doesn't need the key anymore, so the key can be removed from `.env` for security reasons. **But note, that if you `down` your container, you will need to specify the key again before you `up` (recreate) the docker container, so this is not recommended if you down and up your node often.**
+6. (optional) Remove your private key from the `.env` file. After your docker container is created and started, it doesn't need the key anymore, so the key can be removed from `.env` for security reasons. **But note, that if you `down` your container, you will need to specify the key again before you `up` (recreate) the docker container, so wiping your key is not recommended if you down and up your node often.**
 
 After docker containers are created, the node will sync with the chain (may take a while).
 
