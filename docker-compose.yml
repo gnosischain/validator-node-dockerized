@@ -3,7 +3,7 @@ services:
   openethereum:
     init: true
     container_name: openethereum
-    image: openethereum/openethereum:v3.3.0-rc.14
+    image: openethereum/openethereum:v3.3.0-rc.15
     user: root
     command:
       --chain=xdai
