@@ -14,7 +14,7 @@ services:
       --password="$PASSWORD_PATH"
       --tx-time-limit=1000
       --min-gas-price=999999992
-      --gas-floor-target=17000000
+      --gas-floor-target=30000000
       --reseal-min-period=1000
       --engine-signer="$ACCOUNT"
       --force-sealing
