@@ -1,4 +1,4 @@
-# How to launch xDai validator node with Docker Compose and OpenEthereum
+# How to launch Gnosis Chain validator node with Docker Compose and OpenEthereum
 
 1. Install Docker Engine and Docker Compose following the original instructions https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
 
