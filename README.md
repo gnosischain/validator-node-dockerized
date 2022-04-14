@@ -1,4 +1,4 @@
-# How to launch xDai validator node with Docker Compose and Nethermind
+# How to launch Gnosis Chain validator node with Docker Compose and Nethermind
 
 1. Install Docker Engine and Docker Compose following the original instructions https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
 
@@ -11,7 +11,7 @@
 
 3. To be a validator, you need to have your mining address private key. You will keep it in a `.env` file.
 
-    If you don't have the private key in a plain format (a hex string, 64 characters long), but have a JSON Keystore file of it (with a password), please go through     the following steps to get your plain private key string:
+    If you don't have the private key in a plain format (a hex string, 64 characters long), but have a JSON Keystore file of it (with a password), please go through the following steps to get your plain private key string:
 
     - Open your MetaMask.
     - Go to `Import Account`.
