@@ -5,7 +5,7 @@
 2. Clone this repo:
 
     ```bash
-    $ git clone -b nethermind https://github.com/xdaichain/validator-node-dockerized
+    $ git clone -b nethermind https://github.com/gnosischain/validator-node-dockerized
     $ cd validator-node-dockerized
     ```
 
