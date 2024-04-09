@@ -1,6 +1,6 @@
 # DEPRECATED
 > [!WARNING]  
-> Open Ethereum client is no longer supported. To spin up the Gnosis Chain validator please consider using the interactive guide provided in [documentation](https://docs.gnosischain.com/node/manual/).
+> Open Ethereum client is no longer supported. To spin up the Gnosis Chain validator please use the [official documentation](https://docs.gnosischain.com/node/manual/).
 
 # How to launch Gnosis Chain validator node with Docker Compose and OpenEthereum
 
